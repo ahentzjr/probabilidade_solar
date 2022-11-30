@@ -3,7 +3,7 @@ import pandas as pd
 
 # variáveis utilizadas
 
-arq_consumo = 'CONSUMO MENSAL DE ENERGIA ELÉTRICA POR CLASSE.xls'
+arq_consumo = 'consumo.xls'
 
 tabela_consumo = ['CONSUMO POR UF', 'CONSUMO CATIVO POR UF', 'CONSUMO RESIDENCIAL POR UF', 
           'CONSUMO INDUSTRIAL POR UF', 'CONSUMO OUTROS POR UF']
