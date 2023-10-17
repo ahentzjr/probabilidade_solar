@@ -3,7 +3,7 @@ import pandas as pd
 
 # variáveis utilizadas
 
-arq_consumo = 'consumo.xls'
+arq_consumo0 = 'consumo.xls'
 
 tabela_consumo = ['CONSUMO POR UF', 'CONSUMO CATIVO POR UF', 'CONSUMO RESIDENCIAL POR UF', 
           'CONSUMO INDUSTRIAL POR UF', 'CONSUMO OUTROS POR UF']
@@ -73,10 +73,12 @@ def ano_em_range_excel (ano, ano0=2004, nbr=26, nbr_meses=12, debug=True):
         print ('ano_em_range_excel = ',inicioc+":"+fimc)
     return inicioc+":"+fimc
 
-def ler_ano_consumo_total_por_estado (idx_tabela_consumo, ano, debug=False):
+def ler_ano_consumo_total_por_estado (idx_tabela_consumo, ano, arq_consumo = None, debug=False):
     tmp=ano_em_range_excel(ano, debug=debug)
+    arq_consumo = arq_consumo0 if arq_consumo is None else arq_consumo
     if debug:
         print ('tmp =',tmp)
+        print (f"Abrindo arquivo {arq_consumo}}")
     try:
         df = pd.read_excel(arq_consumo,
                        sheet_name=tabela_consumo[idx_tabela_consumo], 
@@ -91,7 +93,7 @@ def ler_ano_consumo_total_por_estado (idx_tabela_consumo, ano, debug=False):
     df['Ano'] = ano
     return df    
 
-def consumo_total_por_estado (idx_tabela_consumo, ano=np.arange(2004,2021), debug=False):
+def consumo_total_por_estado (idx_tabela_consumo, ano=np.arange(2004,2023), debug=False):
     if isinstance(ano, int):
         df = ler_ano_consumo_total_por_estado (idx_tabela_consumo, ano, debug=debug)
         return df
@@ -125,10 +127,12 @@ def consumo_total_por_estado (idx_tabela_consumo, ano=np.arange(2004,2021), debu
             return None
         
 
-def ler_ano_consumo_total_por_estado_long (idx_tabela_consumo, ano, debug=False):
+def ler_ano_consumo_total_por_estado_long (idx_tabela_consumo, ano, arq_consumo = None, debug=False):
     tmp=ano_em_range_excel(ano, debug=debug)
+    arq_consumo = arq_consumo0 if arq_consumo is None else arq_consumo
     if debug:
         print ('tmp =',tmp)
+        print (f"Abrindo arquivo {arq_consumo}}")
     try:
         df = pd.read_excel(arq_consumo,
                        sheet_name=tabela_consumo[idx_tabela_consumo], 
@@ -143,7 +147,7 @@ def ler_ano_consumo_total_por_estado_long (idx_tabela_consumo, ano, debug=False)
     df['Ano'] = ano
     return df            
         
-def consumo_total_por_estado_long (idx_tabela_consumo, ano=np.arange(2004,2021), debug=False):
+def consumo_total_por_estado_long (idx_tabela_consumo, ano=np.arange(2004,2023), debug=False):
     if isinstance(ano, int):
         df = ler_ano_consumo_total_por_estado_long (idx_tabela_consumo, ano, debug=debug)
         return df
@@ -190,7 +194,7 @@ def ler_ano_consumidores_por_estado (idx_tabela_consumidores, ano, debug=False):
     df['Ano'] = ano
     return df        
         
-def consumidores_por_estado (idx_tabela_consumidores, ano=np.arange(2004,2021)):
+def consumidores_por_estado (idx_tabela_consumidores, ano=np.arange(2004,2023)):
     if isinstance(ano, int):
         df = ler_ano_consumidores_por_estado (idx_tabela_consumidores, ano)
         return df
