@@ -78,7 +78,7 @@ def ler_ano_consumo_total_por_estado (idx_tabela_consumo, ano, arq_consumo = Non
     arq_consumo = arq_consumo0 if arq_consumo is None else arq_consumo
     if debug:
         print ('tmp =',tmp)
-        print (f"Abrindo arquivo {arq_consumo}}")
+        print (f"Abrindo arquivo {arq_consumo}")
     try:
         df = pd.read_excel(arq_consumo,
                        sheet_name=tabela_consumo[idx_tabela_consumo], 
